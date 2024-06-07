@@ -22,6 +22,14 @@ const BillSchema = new mongoose.Schema({
     RemainingBalance: {
         type:Number,
     },
+    ListId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "List",
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
     createdAt: {
         type: Date,
         default:Date.now

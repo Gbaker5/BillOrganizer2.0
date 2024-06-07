@@ -1,6 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 //const { create } = require("../models/Bills");
-//const Bills = require("../models/Bills");
+const Bill = require("../models/Bill");
 const List = require("../models/List")
 
 module.exports = {
@@ -54,7 +54,12 @@ module.exports = {
     },
     getAddBills: async (req,res) => {
         try{
-            res.render("createBill.ejs")
+            const list = await List.findOne({_id:req.params.id})
+            console.log(list)
+
+            const bills = await Bill.find({ListId: req.params._id})
+
+            res.render("createBill.ejs",{list:list, bills:bills})
         } catch (err){
             console.log(err)
         }
@@ -62,6 +67,22 @@ module.exports = {
     postAddBills: async (req,res) => {
         try{
             
+            await Bill.create ({
+                Name: req.body.Name,
+                TotalBalance: req.body.TotalBalance,
+                Cost: req.body.Cost,
+                DueDate: req.body.DueDate,
+                AmountPaid: req.body.AmountPaid,
+                DatePaid: req.body.DatePaid,
+                RemainingBalance: req.body.RemainingBalance,
+                ListId: req.params.id,
+                user: req.user.id
+
+
+
+            })
+            console.log("Bill Added")
+            res.redirect(`/bills/newBill/${req.params.id}`)
         } catch (err){
             console.log(err)
         }
