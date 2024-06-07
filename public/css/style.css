@@ -1,0 +1,12 @@
+
+tr, th,td{
+    border: 1px solid;
+}
+
+.list-container{
+    border: 1px solid black;
+}
+
+li{
+    list-style-type: none;
+}

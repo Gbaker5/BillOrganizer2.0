@@ -1,3 +1,4 @@
+<%- include('partials/header') -%>
 <main>
     <h1>Add A Bill to your list</h1>
     <ul>
@@ -13,7 +14,7 @@
                     <th>Due Date</th>
                     <th>Amount Paid</th>
                     <th>Date Paid</th>
-                    <th>Remaining Balance</th>
+                    <th>Remaining Balance (Est)</th>
                   </tr> 
                 <% for(var i=0; i<bills.length; i++) {%>
                 
@@ -33,7 +34,8 @@
                 </table>
                 
     
-
+   
+    
               
 
     </ul>
@@ -71,4 +73,9 @@
 
     <button type="submit">Add Bill</button>
     </form>
+
+
+    <a href="/bills/allBillsList">Bill List</a>
 </main>
+
+<%- include('partials/footer') -%>
