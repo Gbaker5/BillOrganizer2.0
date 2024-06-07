@@ -1,0 +1,16 @@
+<main>
+    <h1>All Bill lists</h1>
+
+    <ul>
+        <% for(var i=0; i<List.length; i++) {%>
+            <li class="col-6 justify-content-between mt-5 layoutbox">
+              <a href="/bills/newBill/<%=List[i]._id%>"> 
+              <p>Name: <%=List[i].Name%></p>
+              <p>Month: <%=List[i].Month%></p>
+              <p>Year: <%=List[i].Year%></p>
+              </a>
+            </li>
+          <% } %>
+           
+    </ul>
+</main>
