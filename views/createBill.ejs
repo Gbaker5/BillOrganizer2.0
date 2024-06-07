@@ -5,6 +5,36 @@
         <p>Month: <%=list.Month%></p>
         <p>Year: <%=list.Year%></p>
         
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Total Balance</th>
+                    <th>Cost</th>
+                    <th>Due Date</th>
+                    <th>Amount Paid</th>
+                    <th>Date Paid</th>
+                    <th>Remaining Balance</th>
+                  </tr> 
+                <% for(var i=0; i<bills.length; i++) {%>
+                
+                    <a href="/bills/billsEdit/<%=bills[i]._id%>"> 
+                        <tr>
+                          <td><%=bills[i].Name%></td>
+                          <td>$<%=bills[i].TotalBalance%></td>
+                          <td>$<%=bills[i].Cost%></td>
+                          <td><%=dueDates[i]%></td>
+                          <td>$<%=bills[i].AmountPaid%></td>
+                          <td><%=datePaid[i]%></td>
+                          <td>$<%=bills[i].RemainingBalance%></td>
+                        
+                        </tr> 
+                    </a>
+                <% } %>
+                </table>
+                
+    
+
+              
 
     </ul>
 

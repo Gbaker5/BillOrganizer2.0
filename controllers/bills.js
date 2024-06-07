@@ -1,4 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
+const moment = require('moment');
+
 //const { create } = require("../models/Bills");
 const Bill = require("../models/Bill");
 const List = require("../models/List")
@@ -57,10 +59,25 @@ module.exports = {
             const list = await List.findOne({_id:req.params.id})
             console.log(list)
 
-            const bills = await Bill.find({ListId: req.params._id})
+            const bills = await Bill.find({ListId: req.params.id})
             console.log(bills)
 
-            res.render("createBill.ejs",{list:list, bills:bills})
+            ///Format Date and insert into array
+            const formatDate = (dateString) => {
+                return moment(dateString).format('MMMM D, YYYY');
+              };
+
+              let dueDates = [];
+              let datePaid = [];
+              
+              for(i=0;i<bills.length;i++){
+                dueDates.push(formatDate(bills[i].DueDate))
+                datePaid.push(formatDate(bills[i].DatePaid))
+              }
+              console.log(dueDates)
+              console.log(datePaid)
+
+            res.render("createBill.ejs",{list:list, bills:bills, dueDates:dueDates, datePaid:datePaid})
         } catch (err){
             console.log(err)
         }
