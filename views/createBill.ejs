@@ -4,36 +4,36 @@
         <p>Name: <%=list.Name%></p>
         <p>Month: <%=list.Month%></p>
         <p>Year: <%=list.Year%></p>
-
+        
 
     </ul>
 
-    <form action="/bills/newBill/<%list._id%>" method="POST">
+    <form action="/bills/newBill/<%=list._id%>" method="POST">
         <p><label for="">Bill Name</label>
         <input type="text" name="Name" id="">
         </p>
 
-        <p><label for="">Total Balance</label>
+        <p><label for="">Total Balance $:</label>
         <input type="text" name="TotalBalance" id="">
         </p>
 
-        <p><label for="">Bill Cost</label>
+        <p><label for="">Bill Cost $:</label>
         <input type="text" name="Cost" id="">
         </p>
 
         <p><label for="">Bill Due Date</label>
-        <input type="text" name="DueDate" id="">
+        <input type="date" name="DueDate" id="">
         </p>
 
-        <p><label for="">Amount paid</label>
+        <p><label for="">Amount paid $:</label>
         <input type="text" name="AmountPaid" id="">
         </p>
 
         <p><label for="">Date Paid</label>
-        <input type="text" name="DatePaid" id="">
+        <input type="date" name="DatePaid" id="">
         </p>
 
-        <p><label for="">Remaining Balance</label>
+        <p><label for="">Remaining Balance $:</label>
         <input type="text" name="RemainingBalance" id="">
         </p>
 

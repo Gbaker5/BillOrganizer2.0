@@ -58,6 +58,7 @@ module.exports = {
             console.log(list)
 
             const bills = await Bill.find({ListId: req.params._id})
+            console.log(bills)
 
             res.render("createBill.ejs",{list:list, bills:bills})
         } catch (err){
