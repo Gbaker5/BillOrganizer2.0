@@ -5,8 +5,13 @@ tr, th,td{
 
 .list-container{
     border: 1px solid black;
+    col-3
 }
 
 li{
     list-style-type: none;
+}
+
+ul{
+
 }

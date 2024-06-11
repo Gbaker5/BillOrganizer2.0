@@ -4,17 +4,17 @@
 
     <ul>
         <% for(var i=0; i<List.length; i++) {%>
-            <div class="list-container">
+            <div class="list-container col-3">
             <li class=" justify-content-between mt-5 layoutbox">
-              <a href="/bills/newBill/<%=List[i]._id%>"> 
+              
               <p>Name: <%=List[i].Name%></p>
               <p>Month: <%=List[i].Month%></p>
               <p>Year: <%=List[i].Year%></p>
-              </a>
+              
             </li>
             <li class="">
-                <p><a href="">View List</a></p>
-                <p><a href="">Add Bill</a></p>
+                <p><a href="/bills/viewList/<%=List[i]._id%>">View List</a></p>
+                <p><a href="/bills/newBill/<%=List[i]._id%>">Add Bill</a></p>
             </li>
             </div>
           <% } %>

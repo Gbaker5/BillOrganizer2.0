@@ -1,0 +1,70 @@
+<%- include('partials/header') -%>
+<main>
+    <h1>Edit List</h1>
+    <ul>
+        <p>Name: <%=list.Name%></p>
+        <p>Month: <%=list.Month%></p>
+        <p>Year: <%=list.Year%></p>
+        
+                <table> 
+                  <tr>
+                    <th>Name</th>
+                    <th>Total Balance</th>
+                    <th>Cost</th>
+                    <th>Due Date</th>
+                    <th>Amount Paid</th>
+                    <th>Date Paid</th>
+                    <th>Remaining Balance (Est)</th>
+                  </tr> 
+                <% for(var i=0; i<bills.length; i++) {%>
+                     <tr>
+                          <td><%=bills[i].Name%></td>
+                          <td>$<%=bills[i].TotalBalance%></td>
+                          <td>$<%=bills[i].Cost%></td>
+                          <td><%=dueDates[i]%></td>
+                          <td>$<%=bills[i].AmountPaid%></td>
+                          <td><%=datePaid[i]%></td>
+                          <td>$<%=bills[i].RemainingBalance%></td> 
+                    </tr>   
+                <% } %>
+                </table>
+
+                <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Total Balance</th>
+                      <th>Cost</th>
+                      <th>Due Date</th>
+                      <th>Amount Paid</th>
+                      <th>Date Paid</th>
+                      <th>Remaining Balance (Est)</th>
+                    </tr> 
+                  <% for(var i=0; i<bills.length; i++) {%>
+
+
+                <form action="/bills/editBill/<%=bills[i]._id%>?_method=PUT" method="POST">
+                    <tr class="edittable col-10">
+                        <td class="col-2"><input type="text" class="tableinputs" id="name" placeholder="<%=bills[i].Name%>"></td>
+                        <td class="col-2"><input type="text" class="tableinputs" id="balance" placeholder="$<%=bills[i].TotalBalance%>"></td>
+                        <td class="col-2"><input type="text" class="tableinputs" id="cost" placeholder="$<%=bills[i].Cost%>"></td>
+                        <td class="col-2"><input type="date" class="tableinputs" id="dueDate" placeholder="<%=dueDates[i]%>"></td>
+                        <td class="col-2"><input type="text" class="tableinputs" id="paid" placeholder="$<%=bills[i].AmountPaid%>"></td>
+                        <td class="col-2"><input type="date" class="tableinputs" id="datePaid" placeholder="$<%=bills[i].datePaid%>"></td>
+                        <td class="col-2"><input type="text" class="tableinputs" id="remaining" placeholder="$<%=bills[i].RemainingBalance%>"></td>
+                    </tr>
+                    </form>
+
+                    <% } %>
+                </table>
+                
+    
+                <a href="/bills/editList/<%=list._id%>">Edit List</a> 
+   
+    
+              
+
+    </ul>
+
+</main>
+
+<%- include('partials/footer') -%>

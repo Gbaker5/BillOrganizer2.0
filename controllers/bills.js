@@ -104,6 +104,92 @@ module.exports = {
         } catch (err){
             console.log(err)
         }
+    },
+    getViewList: async (req,res) => {
+
+        try{
+            const list = await List.findOne({_id:req.params.id})
+            console.log(list)
+
+            const bills = await Bill.find({ListId: req.params.id})
+            console.log(bills)
+
+            ///Format Date and insert into array
+            const formatDate = (dateString) => {
+                return moment(dateString).format('MMMM D, YYYY');
+              };
+
+              let dueDates = [];
+              let datePaid = [];
+              
+              for(i=0;i<bills.length;i++){
+                dueDates.push(formatDate(bills[i].DueDate))
+                datePaid.push(formatDate(bills[i].DatePaid))
+              }
+              console.log(dueDates)
+              console.log(datePaid)
+            
+            
+            
+            
+            res.render("viewBill.ejs",{list:list, bills:bills, dueDates:dueDates, datePaid:datePaid})
+            console.log()
+        }catch (err){
+            vonsole.log(err)
+    }
+
+
+    },
+    getEditList: async (req,res) => {
+        try{
+
+            const list = await List.findOne({_id:req.params.id})
+            console.log(list)
+
+            const bills = await Bill.find({ListId: req.params.id})
+            console.log(bills)
+
+            ///Format Date and insert into array
+            const formatDate = (dateString) => {
+                return moment(dateString).format('MMMM D, YYYY');
+              };
+
+              let dueDates = [];
+              let datePaid = [];
+              
+              for(i=0;i<bills.length;i++){
+                dueDates.push(formatDate(bills[i].DueDate))
+                datePaid.push(formatDate(bills[i].DatePaid))
+              }
+
+              
+
+
+            res.render("editBill.ejs", {list:list, bills:bills, dueDates:dueDates, datePaid:datePaid})
+
+        }catch (err){
+            console.log(err)
+        }
+    },
+    putEditList: async (req,res) => {
+        try{
+
+            //take input from each bill
+
+            //if input is not blank update that bill
+
+            //update each bill
+
+            //for(i=0;i<bills.length;i++){
+            //    if(bills)
+            //}
+
+
+
+            res.redirect(`/bills/editList/${req.params.id}`)
+        }catch (err){
+            console.log(err)
+        }
     }
 
 

@@ -1,0 +1,46 @@
+<%- include('partials/header') -%>
+<main>
+    <h1>View Bill List</h1>
+    <ul>
+        <p>Name: <%=list.Name%></p>
+        <p>Month: <%=list.Month%></p>
+        <p>Year: <%=list.Year%></p>
+        
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Total Balance</th>
+                    <th>Cost</th>
+                    <th>Due Date</th>
+                    <th>Amount Paid</th>
+                    <th>Date Paid</th>
+                    <th>Remaining Balance (Est)</th>
+                  </tr> 
+                <% for(var i=0; i<bills.length; i++) {%>
+                
+                    <a href="/bills/billsEdit/<%=bills[i]._id%>"> 
+                        <tr>
+                          <td><%=bills[i].Name%></td>
+                          <td>$<%=bills[i].TotalBalance%></td>
+                          <td>$<%=bills[i].Cost%></td>
+                          <td><%=dueDates[i]%></td>
+                          <td>$<%=bills[i].AmountPaid%></td>
+                          <td><%=datePaid[i]%></td>
+                          <td>$<%=bills[i].RemainingBalance%></td>
+                        
+                        </tr> 
+                    </a>
+                <% } %>
+                </table>
+                
+    
+                <a href="/bills/editList/<%=list._id%>">Edit List</a> 
+   
+    
+              
+
+    </ul>
+
+</main>
+
+<%- include('partials/footer') -%>
