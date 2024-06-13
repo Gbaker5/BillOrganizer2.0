@@ -171,28 +171,66 @@ module.exports = {
             console.log(err)
         }
     },
-    putEditList: async (req,res) => {
-        try{
+    putEditBill: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { name, balance, cost, dueDate, paid, datePaid, remaining, listId} = req.body;
 
-            //take input from each bill
+            if(name){
+                await Bill.findByIdAndUpdate(id, {
+                    Name: name
+            })
+            }
 
-            //if input is not blank update that bill
+            if(balance){
+                await Bill.findByIdAndUpdate(id, {
+                    TotalBalance: balance
+            })
+            }
+            
+            if(cost){
+                await Bill.findByIdAndUpdate(id, {
+                    Cost: cost
+            })
+            }
 
-            //update each bill
+            if(dueDate){
+                await Bill.findByIdAndUpdate(id, {
+                    DueDate: new Date(dueDate)
+            })
+            }
 
-            //for(i=0;i<bills.length;i++){
-            //    if(bills)
-            //}
+            if(paid){
+                await Bill.findByIdAndUpdate(id, {
+                    AmountPaid: paid
+            })
+            }
 
+            if(datePaid){
+                await Bill.findByIdAndUpdate(id, {
+                    DatePaid: new Date(datePaid)
+            })
+            }
 
+            if(remaining){
+                await Bill.findByIdAndUpdate(id, {
+                    RemainingBalance: remaining
+            })
+            }
 
-            res.redirect(`/bills/editList/${req.params.id}`)
-        }catch (err){
-            console.log(err)
+          // await Bill.findByIdAndUpdate(id, {
+          //     Name: name,
+          //     TotalBalance: balance,
+          //     Cost: cost,
+          //     DueDate: new Date(dueDate),
+          //     AmountPaid: paid,
+          //     DatePaid: new Date(datePaid),
+          //     RemainingBalance: remaining
+          // });
+
+            res.redirect(`/bills/editList/${listId}`);
+        } catch (err) {
+            console.log(err);
         }
     }
-
-
-
-
 };

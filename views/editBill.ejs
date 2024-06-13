@@ -1,6 +1,9 @@
 <%- include('partials/header') -%>
 <main>
+
+
     <h1>Edit List</h1>
+    <% if (list) {%>
     <ul>
         <p>Name: <%=list.Name%></p>
         <p>Month: <%=list.Month%></p>
@@ -29,30 +32,31 @@
                 <% } %>
                 </table>
 
-                <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Total Balance</th>
-                      <th>Cost</th>
-                      <th>Due Date</th>
-                      <th>Amount Paid</th>
-                      <th>Date Paid</th>
-                      <th>Remaining Balance (Est)</th>
-                    </tr> 
+                <ul class="col-12">
                   <% for(var i=0; i<bills.length; i++) {%>
 
 
-                <form action="/bills/editBill/<%=bills[i]._id%>?_method=PUT" method="POST">
-                    <tr class="edittable col-10">
-                        <td class="col-2"><input type="text" class="tableinputs" id="name" placeholder="<%=bills[i].Name%>"></td>
-                        <td class="col-2"><input type="text" class="tableinputs" id="balance" placeholder="$<%=bills[i].TotalBalance%>"></td>
-                        <td class="col-2"><input type="text" class="tableinputs" id="cost" placeholder="$<%=bills[i].Cost%>"></td>
-                        <td class="col-2"><input type="date" class="tableinputs" id="dueDate" placeholder="<%=dueDates[i]%>"></td>
-                        <td class="col-2"><input type="text" class="tableinputs" id="paid" placeholder="$<%=bills[i].AmountPaid%>"></td>
-                        <td class="col-2"><input type="date" class="tableinputs" id="datePaid" placeholder="$<%=bills[i].datePaid%>"></td>
-                        <td class="col-2"><input type="text" class="tableinputs" id="remaining" placeholder="$<%=bills[i].RemainingBalance%>"></td>
-                    </tr>
-                    </form>
+                
+                    <li class="col-5 bill-container">
+                        <form action="/bills/editBill/<%=bills[i]._id%>?_method=PUT" method="POST">
+                            <p><%=bills[i]._id%></p>
+                        <p><input type="text" class="" name="name" placeholder="<%=bills[i].Name%>"></p>
+                        <p><input type="text" class="tableinputs" name="balance" placeholder="$<%=bills[i].TotalBalance%>"></p>
+                        <p><input type="text" class="tableinputs" name="cost" placeholder="$<%=bills[i].Cost%>"></p>
+                        <p><input type="date" class="tableinputs" name="dueDate" placeholder="<%=dueDates[i]%>"></p>
+                        <p><input type="text" class="tableinputs" name="paid" placeholder="$<%=bills[i].AmountPaid%>"></p>
+                        <p><input type="date" class="tableinputs" name="datePaid" placeholder="$<%=bills[i].datePaid%>"></p>
+                        <p><input type="text" class="tableinputs" name="remaining" placeholder="$<%=bills[i].RemainingBalance%>"></p>
+                        <input type="hidden" name="listId" value="<%=list._id%>">
+
+                        <button type="submit">Update Bill</button>
+                        </form>
+                    </li>
+
+                </ul>
+
+                    
+                    
 
                     <% } %>
                 </table>
@@ -64,6 +68,10 @@
               
 
     </ul>
+
+    <% } else { %>
+        <p>No list found</p>
+    <% } %>
 
 </main>
 

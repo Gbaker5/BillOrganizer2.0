@@ -14,6 +14,7 @@ router.get("/newBill/:id", ensureAuth, billsController.getAddBills )
 router.post("/newBill/:id", ensureAuth, billsController.postAddBills )
 router.get("/viewList/:id", ensureAuth, billsController.getViewList)
 router.get("/editList/:id", ensureAuth, billsController.getEditList)
+router.put("/editBill/:id", ensureAuth, billsController.putEditBill)
 
 
 module.exports = router;

@@ -5,7 +5,12 @@ tr, th,td{
 
 .list-container{
     border: 1px solid black;
-    col-3
+    
+}
+
+.bill-container{
+    border: 2px solid black;
+    ;
 }
 
 li{
@@ -14,4 +19,12 @@ li{
 
 ul{
 
+}
+
+.edittableinputs{
+
+}
+
+.inputs{
+    width:20px;
 }
